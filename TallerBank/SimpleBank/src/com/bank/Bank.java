@@ -7,6 +7,7 @@ public class Bank {
 	static final int EXIT = 5;
     static ArrayList<User> users = new ArrayList<>();
     private static Scanner input = new Scanner(System.in);
+    static String tipotransaccion = "";
     public static void initBank(){
         users.add(new User(1,"Usuario1",1,0.0));
         users.add(new User(2,"Usuario2",2,10000.0));
@@ -73,18 +74,20 @@ public class Bank {
         String nombre = readConsole("Nombre :");
         int id = Integer.valueOf(readConsole("Id: "));
         double money = Double.valueOf(readConsole("Dinero: "));
-        users.add(new User(users.size(),nombre,id,money));
+        users.add(new User(users.size()+1,nombre,id,money));
     }
 
     public static void moneyMakeTransaction(){
         int id = Integer.valueOf(readConsole("Key: "));
         double money = Double.valueOf(readConsole("Dinero a depositar: "));
         users.get(id-1).setMoney(users.get(id-1).getMoney() + money);
+        setTipoTransaccion("2");
     }
     public static void moneyWithdrawal(){
         int id = Integer.valueOf(readConsole("Key: "));
         double money = Double.valueOf(readConsole("Dinero a retirar: "));
         users.get(id-1).setMoney(users.get(id-1).getMoney() - money);
+        setTipoTransaccion("3");
     }
     public static void viewUsers(){
         System.out.println("------------------------------------");
@@ -92,6 +95,14 @@ public class Bank {
             System.out.println(u);
         }
         System.out.println("------------------------------------");
+    }
+    
+    public static String getTipoTransaccion() {
+    	return tipotransaccion;
+    }
+    
+    public static void setTipoTransaccion(String tipotrs) {
+    	tipotransaccion= tipotrs;
     }
     
 }
