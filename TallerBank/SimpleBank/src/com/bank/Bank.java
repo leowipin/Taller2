@@ -7,7 +7,7 @@ public class Bank {
 	static final int EXIT = 5;
     static ArrayList<User> users = new ArrayList<>();
     private static Scanner input = new Scanner(System.in);
-    static String tipotransaccion = "";
+    public static String tipotransaccion = "";
     public static void initBank(){
         users.add(new User(1,"Usuario1",1,0.0));
         users.add(new User(2,"Usuario2",2,10000.0));
@@ -74,7 +74,7 @@ public class Bank {
         String nombre = readConsole("Nombre :");
         int id = Integer.valueOf(readConsole("Id: "));
         double money = Double.valueOf(readConsole("Dinero: "));
-        users.add(new User(users.size()+1,nombre,id,money));
+        users.add(new User(users.size(),nombre,id,money));
     }
 
     public static void moneyMakeTransaction(){
